@@ -1,0 +1,18 @@
+const path = require('path');
+require("dotenv").config();
+
+if (process.env.NODE_ENV == 'development') {
+    module.exports = {
+        'config': path.resolve('src/main/utils/sequelize', 'config.js'),
+        'models-path': path.resolve('src/main', 'models'),
+        'seeders-path': path.resolve('src/main/utils/sequelize', 'seeders'),
+        'migrations-path': path.resolve('src/main/utils/sequelize', 'migrations')
+    };
+} else {
+    module.exports = {
+        'config': path.resolve('build/main/utils/sequelize', 'config.js'),
+        'models-path': path.resolve('build/main', 'models'),
+        'seeders-path': path.resolve('build/main/utils/sequelize', 'seeders'),
+        'migrations-path': path.resolve('build/main/utils/sequelize', 'migrations')
+    };
+}
